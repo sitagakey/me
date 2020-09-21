@@ -1,0 +1,23 @@
+@use '@/styles/variables/_color';
+@use '@/styles/variables/_margin';
+@use '@/styles/variables/_width';
+@use '@/styles/mixin/_media';
+
+.cmp_container {
+    max-width: width.$max;
+    padding-left: margin.$medium;
+    padding-right: margin.$medium;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include media.max() {
+        padding-left: margin.$small;
+        padding-right: margin.$small;
+    }
+
+    &.is-sp-full {
+        @include media.max() {
+            padding: 0;
+        }
+    }
+}

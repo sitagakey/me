@@ -1,0 +1,7 @@
+@use '@/styles/variables/_breakpoint';
+
+@mixin max($width:breakpoint.$point-768) {
+    @media screen and (max-width: $width) {
+        @content;
+    }
+}

@@ -1,0 +1,32 @@
+@use '@/styles/variables/_color' as color;
+@use '@/styles/variables/_margin' as margin;
+@use '@/styles/mixin/_media' as media;
+@use '@/styles/mixin/_action' as action;
+
+.cmp_article-body {
+    h2 {
+        padding-bottom: margin.$small;
+        border-bottom: 1px solid color.$gray;
+    }
+    ul:not([class]) {
+        margin-top: margin.$small;
+    }
+    li:not([class]) {
+        display: flex;
+        align-items: flex-start;
+        position: relative;
+        
+        &::before {
+            content: "";
+            min-width: 14px;
+            height: 1px;
+            background: color.$strong-gray;
+            display: inline-block;
+            margin-right: margin.$min;
+            margin-top: calc(0.7em);
+        }
+    }
+    > *:first-child {
+        margin-top: 0;
+    }
+}

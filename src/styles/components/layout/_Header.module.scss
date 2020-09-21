@@ -1,0 +1,100 @@
+@use '@/styles/variables/_width';
+@use '@/styles/variables/_color';
+@use '@/styles/variables/_margin';
+@use '@/styles/extends/_zIndex' as ext-zIndex;
+@use '@/styles/mixin/_media';
+@use '@/styles/mixin/_action';
+
+.cmp_header {
+    @extend %index1;
+
+    max-width: width.$max;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    position: sticky;
+    top: margin.$small;
+    background-color: color.$pure-white;
+    padding-left: margin.$medium;
+    padding-right: margin.$medium;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: margin.$medium;
+    margin-right: margin.$medium;
+
+    @include media.max() {
+        flex-wrap: wrap;
+        margin-left: margin.$small;
+        margin-right: margin.$small;
+        padding-left: margin.$small;
+        padding-right: margin.$small;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    &__hdg {
+        font-size: 2rem;
+        margin: 0;
+        font-weight: bold;
+        line-height: 1;
+
+        a {
+            color: color.$black;
+            
+            @include action.hover() {
+                color: color.$red;
+                text-decoration: none;
+            }
+        }
+    }
+    &__nav {
+        display: block;
+        
+        @include media.max() {
+            display: block;
+            margin-top: margin.$small;
+            margin-left: 0;
+            overflow: hidden;
+            width: 100%;
+            box-shadow: 0 0 5px 0 color.$pure-white inset;
+            position: relative;
+            transition: height .5s cubic-bezier(0.170, 0.935, 0.305, 1.000), visibility .5s , margin .5s cubic-bezier(0.170, 0.935, 0.305, 1.000),;
+
+            &:not(.is-active) {
+                height: 0 !important;
+                margin: 0 !important;
+                visibility: hidden;
+            }
+        }
+    }
+    &__nav-list {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: -#{margin.$medium};
+        margin-top: -#{margin.$small};
+    }
+    &__nav-list-item {
+        list-style: none;
+        margin-left: margin.$medium;
+        margin-top: margin.$small;
+
+        a {
+            white-space: nowrap;
+            color: color.$black;
+            vertical-align: middle;
+
+            @include action.hover() {
+                color: color.$red;
+                text-decoration: none;
+            }
+        }
+        &.is-active {
+            color: color.$red;
+
+            a {
+                color: color.$red;
+            }
+        }
+    }
+}

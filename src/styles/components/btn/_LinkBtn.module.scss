@@ -1,0 +1,19 @@
+@use '@/styles/variables/_color';
+@use '@/styles/mixin/_action';
+
+.cmp_link-btn {
+    height: 42px;
+    display: inline-block;
+    background-color: color.$yellow;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 21px;
+    font-size: 1.2rem;
+    line-height: 42px;
+    color: color.$black;
+    font-weight: bold;
+    
+    @include action.hover() {
+        text-decoration: none;
+    }
+}

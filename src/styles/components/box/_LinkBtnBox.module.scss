@@ -1,0 +1,10 @@
+@use '@/styles/variables/_margin';
+
+.cmp_link-btn-box {
+    text-align: center;
+    margin-top: margin.$large;
+
+    & + * {
+        margin-top: margin.$large;
+    }
+}

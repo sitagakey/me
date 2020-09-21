@@ -1,0 +1,25 @@
+@use '@/styles/variables/_color';
+@use '@/styles/variables/_margin';
+@use '@/styles/variables/_width';
+@use '@/styles/mixin/_media';
+@use '@/styles/mixin/_action';
+
+.cmp_footer {
+    margin-top: margin.$max;
+    background: color.$gray;
+    padding-left: margin.$medium;
+    padding-right: margin.$medium;
+    padding-bottom: margin.$medium;
+    padding-top: margin.$medium;
+
+    p {
+        max-width: width.$max;
+        margin-top: 0;
+        text-align: right;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    small {
+        font-size: 1.2rem;
+    }
+}

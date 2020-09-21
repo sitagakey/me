@@ -1,0 +1,25 @@
+@use '@/styles/variables/_color';
+@use '@/styles/variables/_margin';
+@use '@/styles/mixin/_media';
+
+.cmp_center-hdg {
+    margin-top: margin.$large;
+    text-align: center;
+
+    @include media.max() {
+        margin-top: margin.$medium;
+    }
+
+    & + * {
+        margin-top: margin.$large;
+
+        @include media.max() {
+            margin-top: margin.$medium;
+        }
+    }
+    span {
+        display: inline-block;
+        padding-bottom: 10px;
+        border-bottom: 2px solid color.$red;
+    }
+}

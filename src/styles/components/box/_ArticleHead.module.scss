@@ -1,0 +1,30 @@
+@use '@/styles/variables/_color';
+@use '@/styles/variables/_margin';
+@use '@/styles/mixin/_media';
+@use '@/styles/mixin/_action';
+
+.cmp_article-head {
+    &_date {
+        margin-top: margin.$max;
+        font-size: 1.4rem;
+        color: color.$strong-gray;
+    }
+    &_hdg {
+        margin-top: margin.$min;
+    }
+    &_tag-list {
+        margin-top: margin.$min;
+    }
+    &_tag-list-item {
+        font-size: 1.4rem;
+        color: color.$strong-gray;
+        display: inline-block;
+        
+        &::before {
+            content: '#';
+        }
+        & + & {
+            margin-left: 8px;
+        }
+    }
+}
