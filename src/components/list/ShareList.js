@@ -22,7 +22,7 @@ class ShareList extends React.Component {
                 <p className={styles['cmp_share-list_hdg']}><span>シェアする</span></p>
                 <ul className={styles['cmp_share-list_list']}>
                     <li className={styles['cmp_share-list_list-item']}>
-                        <TwitterShareButton url={this.props.url}>
+                        <TwitterShareButton url={this.props.url} title={this.props.title}>
                             <TwitterIcon size={40} round={true} />
                         </TwitterShareButton>
                     </li>
@@ -32,12 +32,12 @@ class ShareList extends React.Component {
                         </FacebookShareButton>
                     </li>
                     <li className={styles['cmp_share-list_list-item']}>
-                        <HatenaShareButton url={this.props.url}>
+                        <HatenaShareButton url={this.props.url} title={this.props.title}>
                             <HatenaIcon size={40} round={true} />
                         </HatenaShareButton>
                     </li>
                     <li className={styles['cmp_share-list_list-item']}>
-                        <LineShareButton url={this.props.url}>
+                        <LineShareButton url={this.props.url} title={this.props.title}>
                             <LineIcon size={40} round={true} />
                         </LineShareButton>
                     </li>
