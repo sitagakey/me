@@ -53,23 +53,36 @@
         }
 
         @include action.hover() {
-            color: color.$red;
             text-decoration: none;
+            color: color.$red;
         }
     }
     &_tag-list {
-        margin-top: 8px;
+        margin-top: 16px;
+    }
+    &_tag-list-inr {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: -8px;
+        margin-left: -8px;
     }
     &_tag-list-item {
-        color: color.$strong-gray;
         display: inline-block;
         font-size: 1.2rem;
+        margin-top: 8px;
+        margin-left: 8px;
 
-        &::before {
-            content: '#';
-        }
-        & + & {
-            margin-left: 8px;
+        a {
+            color: color.$strong-gray;
+            text-decoration: none;
+            
+            @include action.hover() {
+                color: color.$red;
+            }
+
+            &::before {
+                content: '#';
+            }
         }
     }
     &_thumbnail {

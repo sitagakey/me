@@ -5,21 +5,64 @@
 @use '@/styles/mixin/_action';
 
 .cmp_footer {
-    margin-top: margin.$max;
     background: color.$gray;
-    padding-left: margin.$medium;
-    padding-right: margin.$medium;
-    padding-bottom: margin.$medium;
-    padding-top: margin.$medium;
+    margin-top: margin.$max;
 
-    p {
+    &_inr {
         max-width: width.$max;
-        margin-top: 0;
-        text-align: right;
+        padding-left: margin.$medium;
+        padding-right: margin.$medium;
+        padding-bottom: margin.$medium;
+        padding-top: margin.$medium;
         margin-left: auto;
         margin-right: auto;
+    
+        @include media.max() {
+            padding-left: margin.$small;
+            padding-right: margin.$small;
+        }
+
+        > *:not(:first-child) {
+            margin-top: margin.$medium;
+        }
     }
-    small {
+    &_hdg {
+        margin-top: 0;
+        font-weight: bold;
+
+        & ~ * {
+            margin-top: margin.$small;
+            color: color.$strong-gray;
+        }
+    }
+    &_tag-list-inr {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: -#{margin.$min};
+        margin-left: -#{margin.$small};
+    }
+    &_tag-list-item {
+        font-size: 1.4rem;
+        display: inline-block;
+        margin-top: margin.$min;
+        margin-left: margin.$small;
+        
+        a {
+            color: color.$strong-gray;
+            text-decoration: none;
+            
+            @include action.hover() {
+                color: color.$red;
+            }
+
+            &::before {
+                content: '#';
+            }
+        }
+    }
+    &_copy {
+        color: color.$strong-gray;
         font-size: 1.2rem;
+        text-align: right;
     }
 }

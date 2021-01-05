@@ -10,7 +10,7 @@ const md = require('markdown-it')({
                 return hljs.highlight(lang, str).value;
             } catch (__) {}
         }
-     
+
         return '';
     }
 });

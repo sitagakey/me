@@ -5,6 +5,7 @@
 
 * {
     box-sizing: border-box;
+    word-break: break-word;
 }
 html {
     font-size: 62.5%;
@@ -137,6 +138,10 @@ ul {
     padding: 0;
     margin: 0;
 }
+ol {
+    padding: 0;
+    margin: 0;
+}
 em {
     font-style: normal;
     color: color.$orange;
@@ -159,8 +164,21 @@ button {
     background-color: transparent;
     border: 0;
 }
+dl,
+dt,
+dd {
+    margin: 0;
+    padding: 0;
+}
+dd {
+    line-height: 2;
+
+    @include media.max() {
+        line-height: 1.6;
+    }
+}
 .TLImageViewer {
-    max-width: 800px;
+    max-width: 400px;
     margin-top: margin.$medium;
     margin-left: auto;
     margin-right: auto;

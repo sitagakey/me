@@ -10,6 +10,7 @@ const Layout = ({title = '', children, layout = ''}) => {
         <div className={styles['cmp_layout'] + (layout ? ` ${styles[layout]}` : '')}>
             <Head>
                 <title>{title ? `${title} | ${mainTitle}` : mainTitle}</title>
+                <meta name="description" content="ひきこもりくんのチラ裏" />
                 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400;700&display=swap" rel="stylesheet" />
                 <link href={`/lib/css/TLImageViewer.css`} rel="stylesheet" />
             </Head>

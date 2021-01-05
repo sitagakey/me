@@ -4,8 +4,9 @@
 @use '@/styles/mixin/_action';
 
 .cmp_article-head {
+    margin-top: margin.$large;
+
     &_date {
-        margin-top: margin.$max;
         font-size: 1.4rem;
         color: color.$strong-gray;
     }
@@ -15,16 +16,30 @@
     &_tag-list {
         margin-top: margin.$min;
     }
+    &_tag-list-inr {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: -#{margin.$min};
+        margin-left: -#{margin.$small};
+    }
     &_tag-list-item {
         font-size: 1.4rem;
         color: color.$strong-gray;
         display: inline-block;
-        
-        &::before {
-            content: '#';
-        }
-        & + & {
-            margin-left: 8px;
+        margin-top: margin.$min;
+        margin-left: margin.$small;
+
+        a {
+            color: color.$strong-gray;
+            text-decoration: none;
+            
+            @include action.hover() {
+                color: color.$red;
+            }
+
+            &::before {
+                content: '#';
+            }
         }
     }
 }

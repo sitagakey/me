@@ -6,34 +6,40 @@
 @use '@/styles/mixin/_action';
 
 .cmp_header {
-    @extend %index1;
-
     max-width: width.$max;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 10px;
-    position: sticky;
-    top: margin.$small;
-    background-color: color.$pure-white;
     padding-left: margin.$medium;
     padding-right: margin.$medium;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    margin-left: margin.$medium;
-    margin-right: margin.$medium;
+    margin-left: auto;
+    margin-right: auto;
+    position: sticky;
+    top: margin.$small;
+    z-index: 10;
 
     @include media.max() {
         flex-wrap: wrap;
-        margin-left: margin.$small;
-        margin-right: margin.$small;
         padding-left: margin.$small;
         padding-right: margin.$small;
-        padding-top: 10px;
-        padding-bottom: 10px;
     }
-
-    &__hdg {
+    
+    &_inr {
+        @extend %index1;
+        padding-left: margin.$medium;
+        padding-right: margin.$medium;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 10px;
+        background-color: color.$pure-white;
+    
+        @include media.max() {
+            flex-wrap: wrap;
+            padding-left: margin.$small;
+            padding-right: margin.$small;
+        }
+    }
+    &_hdg {
         font-size: 2rem;
         margin: 0;
         font-weight: bold;
@@ -48,52 +54,30 @@
             }
         }
     }
-    &__nav {
+    &_nav {
         display: block;
-        
-        @include media.max() {
-            display: block;
-            margin-top: margin.$small;
-            margin-left: 0;
-            overflow: hidden;
-            width: 100%;
-            box-shadow: 0 0 5px 0 color.$pure-white inset;
-            position: relative;
-            transition: height .5s cubic-bezier(0.170, 0.935, 0.305, 1.000), visibility .5s , margin .5s cubic-bezier(0.170, 0.935, 0.305, 1.000),;
+    }
+    &_nav-list {
+        display: flex;
+    }
+    &_nav-list-item {
+        list-style: none;
 
-            &:not(.is-active) {
-                height: 0 !important;
-                margin: 0 !important;
-                visibility: hidden;
+        &:not(:first-child) {
+            margin-left: margin.$medium;
+            
+            @include media.max() {
+                margin-left: margin.$small;
             }
         }
-    }
-    &__nav-list {
-        display: flex;
-        flex-wrap: wrap;
-        margin-left: -#{margin.$medium};
-        margin-top: -#{margin.$small};
-    }
-    &__nav-list-item {
-        list-style: none;
-        margin-left: margin.$medium;
-        margin-top: margin.$small;
-
         a {
+            display: block;
             white-space: nowrap;
             color: color.$black;
-            vertical-align: middle;
 
             @include action.hover() {
                 color: color.$red;
                 text-decoration: none;
-            }
-        }
-        &.is-active {
-            color: color.$red;
-
-            a {
-                color: color.$red;
             }
         }
     }

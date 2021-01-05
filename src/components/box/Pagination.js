@@ -18,7 +18,7 @@ class Pagination extends React.Component {
 
         return (
             <div className={styles['cmp_pagination']}>
-                <div className={styles['cmp_pagination__inr']}>
+                <div className={styles['cmp_pagination_inr']}>
                     {circleBtns}
                 </div>
             </div>

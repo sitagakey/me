@@ -1,0 +1,45 @@
+@use '@/styles/variables/_color';
+@use '@/styles/variables/_margin';
+@use '@/styles/variables/_width';
+@use '@/styles/mixin/_media';
+@use '@/styles/mixin/_action';
+
+.cmp_article-link-list {
+    &_hdg {
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        margin-top: 0;
+        
+        &::before {
+            content: "";
+            display: block;
+            width: 16px;
+            height: 2px;
+            border-radius: 1px;
+            background: color.$red;
+            margin-right: 10px;
+        }
+    }
+    &_list {
+        margin-top: margin.$min;
+    }
+    &_list-item {
+        border-bottom: 1px dashed color.$gray;
+        
+        a {
+            display: block;
+            padding-top: margin.$min;
+            padding-bottom: margin.$min;
+            color: color.$black;
+            
+            @include action.hover() {
+                color: color.$red;
+                text-decoration: none;
+            }
+        }
+    }
+    & + & {
+        margin-top: margin.$medium;
+    }
+}

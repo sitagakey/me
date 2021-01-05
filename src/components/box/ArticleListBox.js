@@ -7,37 +7,31 @@ class ArticleListBox extends React.Component {
         super(props);
     }
     render() {
-        const date = (() => {
-            const dateObj = new Date(this.props.articleData.createdAt);
-            const year = dateObj.getFullYear();
-            const month = String(dateObj.getMonth() + 1).padStart(2, '0');;
-            const date = String(dateObj.getDate()).padStart(2, '0');
-            const hour = String(dateObj.getHours()).padStart(2, '0');
-            const minutes = String(dateObj.getMinutes()).padStart(2, '0');
-    
-            return `${year}/${month}/${date} - ${hour}:${minutes}`;
-        })();    
         const HdgType = this.props.hdgType;
-        const url = this.props.articleData.thumbnail ? this.props.articleData.thumbnail.url : '';
+        const url = this.props.postData.thumbnail;
 
         return (
             <div className={styles['cmp_article-list-box']}>
                 <div className={styles['cmp_article-list-box_content']}>
-                    <p className={styles['cmp_article-list-box_date']}>{date}</p>
-                    <Link href="/blog/post/[id]" as={`/blog/post/${this.props.articleData.id}`} >
+                    <p className={styles['cmp_article-list-box_date']}>{this.props.postData.date.str}</p>
+                    <Link href="/post/[year]/[month]/[name]" as={this.props.postData.filePathWithoutExt}>
                         <a className={styles['cmp_article-list-box_link']}>
-                            <HdgType>{this.props.articleData.title}</HdgType>
+                            <HdgType>{this.props.postData.title}</HdgType>
                         </a>
                     </Link>
-                    <ul className={styles['cmp_article-list-box_tag-list']}>
-                        {this.props.articleData.tags.map(tag => (
-                            <React.Fragment key={tag.id}>
-                            <li className={styles['cmp_article-list-box_tag-list-item']}>{tag.name}</li>
-                            </React.Fragment>
-                        ))}
-                    </ul>
+                    <div className={styles['cmp_article-list-box_tag-list']}>
+                        <ul className={styles['cmp_article-list-box_tag-list-inr']}>
+                            {this.props.postData.tags.map((tag) => (
+                                <li className={styles['cmp_article-list-box_tag-list-item']} key={tag}>
+                                    <Link href="/tags/[name]" as={`/tags/${tag}`}>
+                                        <a>{tag}</a>
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-                <Link href="/blog/post/[id]" as={`/blog/post/${this.props.articleData.id}`} >
+                <Link href="/post/[year]/[month]/[name]" as={this.props.postData.filePathWithoutExt}>
                     <a className={styles['cmp_article-list-box_thumbnail']} data-msg={url ? '' : 'サムネイルなし'}>
                         {
                             url && <img src={url} alt="" />
