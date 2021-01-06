@@ -13,7 +13,7 @@ const md = require('markdown-it')({
 
         return '';
     }
-});
+}).use(require('markdown-it-footnote'));
 
 class ArticleBody extends React.Component {
     constructor(props) {

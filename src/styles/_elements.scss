@@ -139,7 +139,7 @@ ul {
     margin: 0;
 }
 ol {
-    padding: 0;
+    padding-left: 1.5ch;
     margin: 0;
 }
 em {
@@ -186,4 +186,11 @@ dd {
     & + * {
         margin-top: margin.$medium;
     }
+}
+.footnotes-sep {
+    border: 0;
+    height: 4px;
+    background: color.$gray;
+    margin-top: margin.$large;
+    margin-bottom: margin.$medium;
 }

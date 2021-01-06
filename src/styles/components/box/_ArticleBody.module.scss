@@ -8,9 +8,19 @@
         padding-bottom: margin.$small;
         border-bottom: 1px solid color.$gray;
     }
-    ul:not([class]) {
+    a,
+    li {
+        scroll-margin-top: 104px;
+        
+        @include media.max() {
+            scroll-margin-top: 100px;
+        }
+    }
+    > ul:not([class]),
+    > ol:not([class]) {
         margin-top: margin.$small;
-
+    }
+    ul:not([class]) {
         li:not([class]) {
             padding-left: 20px;
             position: relative;
@@ -24,12 +34,6 @@
                 position: absolute;
                 left: calc(10px - 2px);
                 top: calc(1.5ex - 2px);
-            }
-            
-            & > ul {
-                margin-top: margin.$min;
-                margin-bottom: margin.$min;
-                margin-left: margin.$small;
             }
         }
     }
