@@ -28,7 +28,7 @@ class Home extends React.Component {
             <Layout>
                 <Head>
                     <meta property="og:site_name" content="ひきるーむ" />
-                    <meta property="og:description" content="ひきこもりくんのチラ裏" />
+                    <meta property="og:description" content="Webフロントエンドエンジニアのひきこもりくんが書いているチラ裏日記だよ彡(^)(^)" />
                     <meta property="og:title" content="ひきるーむ" />
                     <meta property="og:type" content="article" />
                     <meta property="og:url" content="https://hikiroom.site" />

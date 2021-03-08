@@ -18,12 +18,13 @@ export const getPostDataArr = (exploreFileName = '*') => {
         const file = fs.readFileSync(rootPath + filePath, 'utf-8');
         const fileData = gm(file);
         const title = fileData.data.title;
-        const date = (() => {
-            const year = String(fileData.data.date.getFullYear());
-            const month = String(fileData.data.date.getMonth() + 1).padStart(2, '0');;
-            const date = String(fileData.data.date.getDate()).padStart(2, '0');
-            const hour = String(fileData.data.date.getHours()).padStart(2, '0');
-            const minutes = String(fileData.data.date.getMinutes()).padStart(2, '0');
+        const getDateInfo = (dateObj) => {
+            const year = String(dateObj.getFullYear());
+            const month = String(dateObj.getMonth() + 1).padStart(2, '0');;
+            const date = String(dateObj.getDate()).padStart(2, '0');
+            const hour = String(dateObj.getHours()).padStart(2, '0');
+            const minutes = String(dateObj.getMinutes()).padStart(2, '0');
+            const seconds = String(dateObj.getSeconds()).padStart(2, '0');
 
             return {
                 year,
@@ -31,9 +32,12 @@ export const getPostDataArr = (exploreFileName = '*') => {
                 date,
                 hour,
                 minutes,
+                seconds,
                 str: `${year}/${month}/${date} - ${hour}:${minutes}`,
             };
-        })();
+        };
+        const date = getDateInfo(fileData.data.date);
+        const update = getDateInfo(fileData.data.update);
         const tags = fileData.data.tags;
         const thumbnail = fileData.data.thumbnail;
         const body = fileData.content;
@@ -46,6 +50,7 @@ export const getPostDataArr = (exploreFileName = '*') => {
         return {
             title,
             date,
+            update,
             tags,
             thumbnail,
             body,

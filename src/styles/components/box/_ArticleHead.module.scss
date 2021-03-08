@@ -7,8 +7,13 @@
     margin-top: margin.$large;
 
     &_date {
+        display: flex;
         font-size: 1.4rem;
         color: color.$strong-gray;
+
+        p {
+            margin-top: 0;
+        }
     }
     &_hdg {
         margin-top: margin.$min;

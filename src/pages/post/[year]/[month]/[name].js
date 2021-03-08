@@ -16,17 +16,45 @@ class Article extends React.Component {
     }
 
     render() {
+        const description = (() => {
+            const { year, month, date } = this.props.postData.date;
+
+            return `ひきるーむの${year}年${month}月${date}日に公開された記事、「${this.props.postData.title}」です。`;
+        })();
+        const jsonLd = (() => {
+            const headLine = this.props.postData.title;
+            const datePublished = (() => {
+                const { year, month, date, hour, minutes, seconds } = this.props.postData.date;
+    
+                return `${year}${month}${date}T${hour}${minutes}${seconds}+0900`;
+            })();
+            const dateModified = (() => {
+                const { year, month, date, hour, minutes, seconds } = this.props.postData.update;
+    
+                return `${year}${month}${date}T${hour}${minutes}${seconds}+0900`;
+            })();
+
+            return JSON.stringify({
+                '@context': 'http://schema.org',
+                '@type': 'BlogPosting',
+                'datePublished': datePublished,
+                'dateModified': dateModified,
+                'headline': headLine,
+            });
+        })();
+
         return (
-            <Layout title={`${this.props.postData.title}`}>
+            <Layout title={`${this.props.postData.title}`} description={description}>
                 <Head>
                     <meta property="og:site_name" content="ひきるーむ" />
-                    <meta property="og:description" content="ひきこもりくんのチラ裏" />
+                    <meta property="og:description" content={description} />
                     <meta property="og:title" content={`${this.props.postData.title} | ひきるーむ`} />
                     <meta property="og:type" content="article" />
                     <meta property="og:url" content={`https://hikiroom.site${this.props.postData.filePathWithoutExt}`} />
                     <meta property="og:image" content={this.props.postData.thumbnail ? `https://hikiroom.site${this.props.postData.thumbnail}` : 'https://hikiroom.site/images/ogp.png'} />
                     <meta name="twitter:card" content="summary_large_image" />
                     <meta name="twitter:site" content="@hikiroom" />
+                    <script type="application/ld+json" dangerouslySetInnerHTML={{__html: jsonLd}}></script>
                 </Head>
                 <Container>
                     <ArticleHead postData={this.props.postData} />
