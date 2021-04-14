@@ -26,8 +26,8 @@ body {
     }
 }
 p {
-    line-height: 2;
-    margin-top: margin.$small;
+    line-height: 1.8;
+    margin-top: margin.$medium;
     margin-bottom: 0;
 
     @include media.max() {
