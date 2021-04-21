@@ -28,7 +28,7 @@ class Footer extends React.Component {
                     </div>
                     <dl className={styles['cmp_footer_group']}>
                         <dt className={styles['cmp_footer_hdg']}>僕について</dt>
-                        <dd>僕は大都会新宿でフロントエンドエンジニアをしているひきこもりくんだよ彡(^)(^)</dd>
+                        <dd>僕は大都会新宿でフロントエンドエンジニアをしていたひきこもりくんだよ彡(^)(^)</dd>
                     </dl>
                     <p className={styles['cmp_footer_copy']}><small>&copy; 2020 ひきるーむ</small></p>
                 </div>
