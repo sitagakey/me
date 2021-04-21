@@ -63,13 +63,15 @@ class Article extends React.Component {
                 <Container>
                     <Container spFull={true}>
                         <Container spFull={true}>
-                            <ArticleBody mdText={this.props.postData.body} />
-                            <ShareList url={`https://hikiroom.site${this.props.postData.filePathWithoutExt}`} title={this.props.postData.title} />
-                            {this.props.postDataArrOfLatest5WithTag.map((postDataArrWithTag) => (
-                                <ArticleLinkList label={`${postDataArrWithTag.tag}タグのついた最新のチラ裏`} postDataArr={postDataArrWithTag.postDataArr} key={postDataArrWithTag.tag} />
-                            ))}
-                            <ArticleLinkList label={'最新のチラ裏'} postDataArr={this.props.postDataArrOfLatest5} />
-                            <LinkBtnBox href="/" label="最新のチラ裏一覧へ" />
+                            <Container spFull={true}>
+                                <ArticleBody mdText={this.props.postData.body} />
+                                <ShareList url={`https://hikiroom.site${this.props.postData.filePathWithoutExt}`} title={this.props.postData.title} />
+                                {this.props.postDataArrOfLatest5WithTag.map((postDataArrWithTag) => (
+                                    <ArticleLinkList label={`${postDataArrWithTag.tag}タグのついた最新のチラ裏`} postDataArr={postDataArrWithTag.postDataArr} key={postDataArrWithTag.tag} />
+                                ))}
+                                <ArticleLinkList label={'最新のチラ裏'} postDataArr={this.props.postDataArrOfLatest5} />
+                                <LinkBtnBox href="/" label="最新のチラ裏一覧へ" />
+                            </Container>
                         </Container>
                     </Container>
                 </Container>
