@@ -1,15 +1,20 @@
-import {GA_TRACKING_ID} from '@/lib/gtag';
+import { GA_TRACKING_ID } from '@/lib/gtag';
 import Head from 'next/head';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import styles from '@/styles/components/layout/_Layout.module.scss';
 
-const Layout = ({title = '', description = '', children, layout = ''}) => {
+type Props = {
+    title?: string;
+    description?: string;
+    children: React.ReactNode;
+};
+
+const Layout = ({title = '', description = '', children}: Props) => {
     const mainTitle = 'ひきるーむ';
     const fallbackDescription = 'Webフロントエンドエンジニアのひきこもりくんが書いているチラ裏日記だよ彡(^)(^)';
 
     return (
-        <div className={styles['cmp_layout'] + (layout ? ` ${styles[layout]}` : '')}>
+        <div>
             <Head>
                 <title>{title ? `${title} | ${mainTitle}` : mainTitle}</title>
                 <meta name="description" content={description ? description : fallbackDescription} />

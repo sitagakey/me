@@ -1,4 +1,3 @@
 # ひきるーむ
 
-僕のチラ裏  
-[https://hikiroom.site/](https://hikiroom.site/)
+僕のチラ裏（ブログ）

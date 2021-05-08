@@ -3,12 +3,32 @@ import gm from 'gray-matter';
 import fs from 'fs';
 import path from 'path';
 
+export type DateInfo = {
+    year: string;
+    month: string;
+    date: string;
+    hour: string;
+    minutes: string;
+    seconds: string;
+    str: string;
+};
+export type PostData = {
+    title: string;
+    date: DateInfo;
+    update: DateInfo;
+    tags: string[];
+    thumbnail: string;
+    body: string;
+    filePath: string;
+    filePathWithoutExt: string;
+    fileName: string;
+};
 /**
  * 記事データ取得
  * @param {string} [exploreFileName] 取得したい記事のファイル名
  * @returns {array}
  */
-export const getPostDataArr = (exploreFileName = '*') => {
+export const getPostDataArr = (exploreFileName = '*'): PostData[] => {
     const rootPath = path.resolve(process.cwd(), './src/');
     const filePaths = glob.sync(`/post/**/${exploreFileName}.md`, {
         root: rootPath,
@@ -18,7 +38,7 @@ export const getPostDataArr = (exploreFileName = '*') => {
         const file = fs.readFileSync(rootPath + filePath, 'utf-8');
         const fileData = gm(file);
         const title = fileData.data.title;
-        const getDateInfo = (dateObj) => {
+        const getDateInfo = (dateObj: Date): DateInfo => {
             const year = String(dateObj.getFullYear());
             const month = String(dateObj.getMonth() + 1).padStart(2, '0');;
             const date = String(dateObj.getDate()).padStart(2, '0');
@@ -76,17 +96,15 @@ export const getPostDataArr = (exploreFileName = '*') => {
  * @param {number} [splitIndex] データを分割するタイミング
  * @returns {array}
  */
-export const splitPostDataArr = (postDataArr, splitIndex = 10) => {
-    const splittedPostDataArr = postDataArr.reduce((accumulator, currentData, i) => {
-        if (i % splitIndex === 0) {
-            accumulator.push([]);
-        }
-
-        const lastIndex = accumulator.length - 1;
-        accumulator[lastIndex].push(currentData);
+export const splitPostDataArr = (postDataArr: PostData[], splitIndex: number = 10): PostData[][] => {
+    const splitPostDataArr = postDataArr.reduce((accumulator: PostData[][], currentData: PostData, i) => {
+        const toPushIndex = Math.trunc(i / splitIndex);
+        accumulator[toPushIndex].push(currentData);
 
         return accumulator;
-    }, []);
+    },
+        new Array(Math.ceil(postDataArr.length / splitIndex)).fill(null).map(_ => [])
+    );
 
-    return splittedPostDataArr;
+    return splitPostDataArr;
 };
