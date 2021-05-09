@@ -5,7 +5,6 @@ export const tags = [
     '日記',
     'アプリ',
     'Nuxt.js',
-    'JavaScript',
     'Next.js',
     'TypeScript',
 ];
