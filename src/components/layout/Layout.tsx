@@ -9,7 +9,7 @@ type Props = {
     children: React.ReactNode;
 };
 
-const Layout = ({title = '', description = '', children}: Props) => {
+const Layout: React.VFC<Props> = ({title = '', description = '', children}) => {
     const mainTitle = 'ひきるーむ';
     const fallbackDescription = 'Webフロントエンドエンジニアのひきこもりくんが書いているチラ裏日記だよ彡(^)(^)';
 

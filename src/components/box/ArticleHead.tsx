@@ -6,7 +6,7 @@ type Props = {
     postData: PostData;
 };
 
-const ArticleHead = (props: Props) => {
+const ArticleHead: React.VFC<Props> = (props) => {
     const date = (() => {
         if (props.postData.date.str === props.postData.update.str) {
             return (

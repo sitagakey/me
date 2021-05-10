@@ -4,7 +4,7 @@ type Props = {
     children: React.ReactNode;
 }
 
-const DescriptionText = (props: Props) => {
+const DescriptionText: React.VFC<Props> = (props) => {
     return (
         <p className={styles['cmp_description-text']}>{props.children}</p>
     );

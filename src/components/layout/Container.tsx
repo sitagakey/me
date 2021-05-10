@@ -5,7 +5,7 @@ type Props = {
     children: React.ReactNode;
 };
 
-const Container = (props: Props) =>  {
+const Container: React.VFC<Props> = (props) =>  {
     return (
         <div className={styles['cmp_container'] + (props.spFull ? ` ${styles['is-sp-full']}` : '')}>
             {props.children}

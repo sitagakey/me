@@ -20,7 +20,7 @@ type Props = {
     }[];
 };
 
-const Article = (props: Props) => {
+const Article: React.VFC<Props> = (props) => {
     const description = (() => {
         const { year, month, date } = props.postData.date;
 

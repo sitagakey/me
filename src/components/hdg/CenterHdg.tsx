@@ -5,7 +5,7 @@ type Props = {
     children: React.ReactNode;
 }
 
-const CenterHdg = (props: Props) => {
+const CenterHdg: React.VFC<Props> = (props) => {
     const TagName = props.tagName;
 
     return (

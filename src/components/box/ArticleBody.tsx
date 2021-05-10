@@ -19,7 +19,7 @@ type Props = {
     mdText: string;
 };
 
-const ArticleBody = (props: Props) => {
+const ArticleBody: React.VFC<Props> = (props) => {
     const [isTLImageViewerDidMount, setIsTLImageViewerDidMount] = useState(false);
 
     useEffect(() => {

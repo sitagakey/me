@@ -7,7 +7,7 @@ type Props = {
     btnClickEvent: (index: number) => void;
 };
 
-const Pagination = (props: Props) => {
+const Pagination: React.VFC<Props> = (props) => {
     const circleBtns = [];
     for (let i = 0; i < props.count; i++) {
         const isActive = props.index === i;

@@ -15,7 +15,7 @@ type Props = {
     title: string;
 };
 
-const ShareList = (props: Props) => {
+const ShareList: React.VFC<Props> = (props) => {
     return (
         <div className={styles['cmp_share-list']}>
             <p className={styles['cmp_share-list_hdg']}><span>シェアする</span></p>

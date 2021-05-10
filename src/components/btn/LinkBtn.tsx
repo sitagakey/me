@@ -6,7 +6,7 @@ type Props = {
     children: React.ReactNode;
 }
 
-const LinkBtn = (props: Props) =>  {
+const LinkBtn: React.VFC<Props> = (props) =>  {
     return (
         <Link href={props.href}>
             <a className={styles['cmp_link-btn']}>

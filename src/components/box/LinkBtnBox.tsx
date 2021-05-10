@@ -6,7 +6,7 @@ type Props = {
     label: string;
 };
 
-const LinkBtnBox = (props: Props) => {
+const LinkBtnBox: React.VFC<Props> = (props) => {
     return (
         <div className={styles['cmp_link-btn-box']}>
             <LinkBtn href={props.href}>{props.label}</LinkBtn>

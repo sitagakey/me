@@ -16,7 +16,7 @@ type Props = {
     splitPostDataArr: PostData[][];
 }
 
-const TagPage = (props: Props) => {
+const TagPage: React.VFC<Props> = (props) => {
     const [pageIndex, setPageIndex] = useState(0);
     const changeIndex = (index: number) => {
         setPageIndex(index);

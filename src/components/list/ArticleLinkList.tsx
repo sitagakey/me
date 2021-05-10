@@ -7,7 +7,7 @@ type Props = {
     postDataArr: PostData[];
 };
 
-const ArticleLinkList = (props: Props) => {
+const ArticleLinkList: React.VFC<Props> = (props) => {
     return (
         <div className={styles['cmp_article-link-list']}>
             <p className={styles['cmp_article-link-list_hdg']}>{props.label}</p>

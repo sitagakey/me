@@ -7,7 +7,7 @@ type Props = {
     postData: PostData;
 };
 
-const ArticleListBox = (props: Props) => {
+const ArticleListBox: React.VFC<Props> = (props) => {
     const HdgType = props.hdgType;
     const url = props.postData.thumbnail;
 

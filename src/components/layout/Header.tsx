@@ -5,7 +5,7 @@ type Props = {
     hasTitle: boolean;
 };
 
-const Header = (props: Props) => {
+const Header: React.VFC<Props> = (props) => {
     const h1Title = 'ひきるーむ';
     const navListItem = [
         {

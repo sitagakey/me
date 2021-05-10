@@ -6,8 +6,10 @@ type Props = {
     onClick: () => void;
 }
 
-export default function CircleBtn(props: Props) {
+const CircleBtn: React.VFC<Props> = (props) => {
     return (
         <button className={styles['cmp_circle-btn'] + (props.isActive ? ` ${styles['is-active']}` : '')} type="button" onClick={props.onClick}>{props.label}</button>
     );
 };
+
+export default CircleBtn;

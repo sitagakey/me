@@ -4,7 +4,7 @@ type Props = {
     src: string;
 };
 
-const ArticleThumbnail = (props: Props) => {
+const ArticleThumbnail: React.VFC<Props> = (props) => {
     return (
         <div className={styles['cmp_article-thumbnail']} data-msg={props.src ? '' : 'サムネイルなし'}>
             {props.src && <img className={styles['cmp_article-thumbnail_bg']} src={props.src}/>}

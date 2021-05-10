@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { tags } from '@/lib/variables';
 import styles from '@/styles/components/layout/_Footer.module.scss';
 
-const Footer = () => {
+const Footer: React.VFC = () => {
     return (
         <footer className={styles['cmp_footer']}>
             <div className={styles['cmp_footer_inr']}>

@@ -13,7 +13,7 @@ type Props = {
     splitPostDataArr: PostData[][];
 };
 
-const Home = (props: Props) => {
+const Home: React.VFC<Props> = (props) => {
     const [pageIndex, setPageIndex] = useState(0);
     const changePageIndex = (index: number) => {
         setPageIndex(index);
