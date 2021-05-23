@@ -10,6 +10,7 @@ import ShareList from '@/components/list/ShareList';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
 import { ParsedUrlQuery } from 'querystring';
 import { getPostDataArr, PostData } from '@/lib/utils';
+import { useEffect } from 'react';
 
 type Props = {
     postData: PostData;
@@ -47,6 +48,10 @@ const Article: React.VFC<Props> = (props) => {
             'headline': headLine,
         });
     })();
+
+    useEffect(() => {
+        import('twitter-like-image');
+    });
 
     return (
         <Layout title={`${props.postData.title}`} description={description}>

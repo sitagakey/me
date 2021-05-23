@@ -19,7 +19,6 @@ const Layout: React.VFC<Props> = ({title = '', description = '', children}) => {
                 <title>{title ? `${title} | ${mainTitle}` : mainTitle}</title>
                 <meta name="description" content={description ? description : fallbackDescription} />
                 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;400;700&display=swap" rel="stylesheet" />
-                <link href={`/lib/css/TLImageViewer.css`} rel="stylesheet" />
                 <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}></script>
                 <script dangerouslySetInnerHTML={
                     {__html: `

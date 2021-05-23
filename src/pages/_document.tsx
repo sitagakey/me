@@ -14,7 +14,6 @@ class MyDocument extends Document {
                 <body>
                     <Main />
                     <NextScript />
-                    <script src="/lib/js/TLImageViewer.js" defer />
                 </body>
             </Html>
         )

@@ -20,19 +20,6 @@ type Props = {
 };
 
 const ArticleBody: React.VFC<Props> = (props) => {
-    const [isTLImageViewerDidMount, setIsTLImageViewerDidMount] = useState(false);
-
-    useEffect(() => {
-        if (!isTLImageViewerDidMount && window && window.hasOwnProperty('TLImageViewer')) {
-            document.querySelectorAll('.js-img').forEach((el) => {
-                // @ts-ignore @TODO: ライブラリをESM化する
-                new window.TLImageViewer(el);
-            });
-    
-            setIsTLImageViewerDidMount(true);
-        }
-    });
-
     return (
         <div className={styles['cmp_article-body']} dangerouslySetInnerHTML={{__html: `${md.render(props.mdText)}`}} />
     );
