@@ -7,4 +7,5 @@ export const tags = [
     'Nuxt.js',
     'Next.js',
     'TypeScript',
+    'JavaScript',
 ];
