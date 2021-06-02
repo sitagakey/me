@@ -55,6 +55,13 @@ pre code {
     border-radius: 6px;
 }
 code {
+    background-color: color.$black;
+    color: color.$pure-white;
+    padding: margin.$min-2x margin.$min-x;
+    border-radius: 2px;
+    font-size: 1.2rem;
+}
+code {
     overflow: auto
 }
 blockquote {

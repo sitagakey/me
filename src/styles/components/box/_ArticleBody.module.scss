@@ -20,6 +20,15 @@
     > ol:not([class]) {
         margin-top: margin.$small;
         
+        li:not([class]):not(:first-child) {
+            margin-top: margin.$min-x;
+        }
+        ul:not([class]),
+        ol:not([class]) {
+            margin-top: margin.$min-x;
+        }
+    }
+    > ul:not([class]) {
         li:not([class]) {
             padding-left: 20px;
             position: relative;
@@ -35,15 +44,8 @@
                 top: calc(1.5ex - 2px);
             }
         }
-        li:not([class]):not(:first-child) {
-            margin-top: margin.$bellowMin;
-        }
-
-        ul:not([class]),
-        ol:not([class]) {
-            margin-top: margin.$bellowMin;
-        }
     }
+    
     > *:first-child {
         margin-top: 0;
     }

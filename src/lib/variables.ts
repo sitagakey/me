@@ -8,4 +8,5 @@ export const tags = [
     'Next.js',
     'TypeScript',
     'JavaScript',
+    'Web標準',
 ];
