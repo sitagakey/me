@@ -5,7 +5,7 @@
 
 * {
     box-sizing: border-box;
-    word-break: break-word;
+    word-break: break-all;
 }
 html {
     font-size: 62.5%;
@@ -37,7 +37,7 @@ p {
 a {
     color: color.$blue;
     text-decoration: none;
-    
+
     @include action.hover() {
         text-decoration: underline;
     }
@@ -53,16 +53,14 @@ pre code {
     color: color.$pure-white;
     padding: margin.$small;
     border-radius: 6px;
+    overflow: auto;
 }
 code {
     background-color: color.$black;
     color: color.$pure-white;
     padding: margin.$min-2x margin.$min-x;
     border-radius: 2px;
-    font-size: 1.2rem;
-}
-code {
-    overflow: auto
+    font-size: 1.4rem;
 }
 blockquote {
     border-left: 4px solid color.$blue;
@@ -71,7 +69,7 @@ blockquote {
     padding-left: margin.$small;
     margin-left: 0;
     color: color.$strong-gray;
-    
+
     > * {
         margin-left: 0;
         margin-right: 0;
