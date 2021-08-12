@@ -9,4 +9,5 @@ export const tags = [
     'TypeScript',
     'JavaScript',
     'Web標準',
+    'テキストエディター',
 ];
