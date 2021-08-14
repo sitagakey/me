@@ -10,4 +10,5 @@ export const tags = [
     'JavaScript',
     'Web標準',
     'テキストエディター',
+    'A11y',
 ];
