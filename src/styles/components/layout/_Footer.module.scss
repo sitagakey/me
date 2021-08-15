@@ -8,6 +8,10 @@
     background: color.$gray;
     margin-top: margin.$max;
 
+    @include media.dark() {
+        background: color.$black;
+    }
+
     &_inr {
         max-width: width.$max;
         padding-left: margin.$medium;
@@ -30,9 +34,17 @@
         margin-top: 0;
         font-weight: bold;
 
+        @include media.dark() {
+            color: color.$pure-white;
+        }
+
         & ~ * {
             margin-top: margin.$small;
             color: color.$strong-gray;
+
+            @include media.dark() {
+                color: darken(color.$pure-white, 25%);
+            }
         }
     }
     &_tag-list-inr {
@@ -54,6 +66,9 @@
             @include action.hover() {
                 color: color.$red;
             }
+            @include media.dark() {
+                color: darken(color.$pure-white, 25%);
+            }
 
             &::before {
                 content: '#';
@@ -64,5 +79,9 @@
         color: color.$strong-gray;
         font-size: 1.2rem;
         text-align: right;
+
+        @include media.dark() {
+            color: darken(color.$pure-white, 25%);
+        }
     }
 }

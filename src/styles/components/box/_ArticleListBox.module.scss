@@ -19,6 +19,9 @@
         padding-right: 0;
         flex-direction: column-reverse;
     }
+    @include media.dark() {
+        border-bottom: 1px solid color.$strong-gray;
+    }
 
     &_content {
         flex-basis: 100%;
@@ -55,6 +58,9 @@
         @include action.hover() {
             text-decoration: none;
             color: color.$red;
+        }
+        @include media.dark() {
+            color: color.$middle-gray;
         }
     }
     &_tag-list {

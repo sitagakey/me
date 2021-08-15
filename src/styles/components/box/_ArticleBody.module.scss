@@ -7,6 +7,10 @@
     h2 {
         padding-bottom: margin.$small;
         border-bottom: 1px solid color.$middle-gray;
+
+        @include media.dark() {
+            border-bottom: 1px solid color.$strong-gray;
+        }
     }
     a,
     li {

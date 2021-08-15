@@ -38,6 +38,9 @@
             padding-left: margin.$small;
             padding-right: margin.$small;
         }
+        @include media.dark() {
+            background-color: color.$black;
+        }
     }
     &_hdg {
         font-size: 2rem;
@@ -51,6 +54,9 @@
             @include action.hover() {
                 color: color.$red;
                 text-decoration: none;
+            }
+            @include media.dark() {
+                color: color.$middle-gray;
             }
         }
     }
@@ -78,6 +84,9 @@
             @include action.hover() {
                 color: color.$red;
                 text-decoration: none;
+            }
+            @include media.dark() {
+                color: color.$pure-white;
             }
         }
     }

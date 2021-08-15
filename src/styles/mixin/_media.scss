@@ -5,3 +5,8 @@
         @content;
     }
 }
+@mixin dark() {
+    @media screen and (prefers-color-scheme: dark) {
+        @content;
+    }
+}

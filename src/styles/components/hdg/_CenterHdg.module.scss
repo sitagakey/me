@@ -9,6 +9,9 @@
     @include media.max() {
         margin-top: margin.$medium;
     }
+    @include media.dark() {
+        color: color.$middle-gray;
+    }
 
     & + * {
         margin-top: margin.$large;

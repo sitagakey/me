@@ -26,7 +26,11 @@
     }
     &_list-item {
         border-bottom: 1px dashed color.$middle-gray;
-        
+
+        @include media.dark() {
+            border-bottom: 1px dashed color.$strong-gray;
+        }
+
         a {
             display: block;
             padding-top: margin.$min;
@@ -36,6 +40,9 @@
             @include action.hover() {
                 color: color.$red;
                 text-decoration: none;
+            }
+            @include media.dark() {
+                color: color.$middle-gray;
             }
         }
     }

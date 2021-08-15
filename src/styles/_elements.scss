@@ -23,6 +23,10 @@ body {
     @include media.max() {
         font-size: 1.4rem;
     }
+    @include media.dark() {
+        background-color: color.$pure-black;
+        color: color.$middle-gray;
+    }
 }
 p {
     line-height: 1.8;
@@ -197,4 +201,8 @@ dd {
     background: color.$gray;
     margin-top: margin.$large;
     margin-bottom: margin.$medium;
+
+    @include media.dark() {
+        background: color.$strong-gray;
+    }
 }
