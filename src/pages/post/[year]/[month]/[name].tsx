@@ -77,7 +77,7 @@ const Article: React.VFC<Props> = (props) => {
                             <ArticleBody mdText={props.postData.body} />
                             <ShareList url={`https://hikiroom.site${props.postData.filePathWithoutExt}`} title={props.postData.title} />
                             {props.postDataArrOfLatest5WithTag.map((postDataArrWithTag) => (
-                                <ArticleLinkList label={`${postDataArrWithTag.tag}タグのついた最新のチラ裏`} postDataArr={postDataArrWithTag.postDataArr} key={postDataArrWithTag.tag} />
+                                <ArticleLinkList label={`「${postDataArrWithTag.tag}」タグがついた最新のチラ裏`} postDataArr={postDataArrWithTag.postDataArr} key={postDataArrWithTag.tag} />
                             ))}
                             <ArticleLinkList label={'最新のチラ裏'} postDataArr={props.postDataArrOfLatest5} />
                             <LinkBtnBox href="/" label="最新のチラ裏一覧へ" />
@@ -138,11 +138,14 @@ export const getStaticProps: GetStaticProps<GetStaticPropsResult, PropsContext> 
 
     const postDataArrOfLatest5 = postDataArr.filter((_, i) => i < 5);
     const postDataArrOfLatest5WithTag = postData.tags.map((tag) => {
-        const filteredPostDataArr = postDataArr.filter((postData, i) => postData.tags.includes(tag) && i < 5);
+        const filteredPostDataArr = postDataArr.filter((postData) => {
+            return postData.tags.includes(tag);
+        });
+        const reducedPostDataArr = filteredPostDataArr.filter((_, i) => i < 5);
 
         return {
             tag,
-            postDataArr: filteredPostDataArr,
+            postDataArr: reducedPostDataArr,
         }
     });
 
