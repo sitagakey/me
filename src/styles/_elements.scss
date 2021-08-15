@@ -24,7 +24,7 @@ body {
         font-size: 1.4rem;
     }
     @include media.dark() {
-        background-color: color.$pure-black;
+        background-color: color.$calm-black;
         color: color.$middle-gray;
     }
 }

@@ -39,7 +39,7 @@
             padding-right: margin.$small;
         }
         @include media.dark() {
-            background-color: color.$black;
+            background-color: color.$calm-black;
         }
     }
     &_hdg {
