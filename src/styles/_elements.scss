@@ -57,13 +57,16 @@ pre code {
     padding: margin.$small;
     border-radius: 6px;
     overflow: auto;
+    line-height: inherit;
 }
 code {
     background-color: color.$black;
     color: color.$pure-white;
-    padding: margin.$min-2x margin.$min-x;
+    padding: margin.$min-x margin.$min-x;
     border-radius: 2px;
     font-size: 1.4rem;
+    line-height: 1;
+    display: inline-flex;
 }
 blockquote {
     border-left: 4px solid color.$blue;
@@ -127,6 +130,20 @@ h6 {
 
     @include media.max() {
         font-size: 1.6rem;
+    }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    code {
+        border-radius: 0;
+        background-color: inherit;
+        font-size: inherit;
+        font-weight: bold;
+        color: inherit;
     }
 }
 h2,
