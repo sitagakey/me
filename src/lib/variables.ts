@@ -11,4 +11,5 @@ export const tags = [
     'Web標準',
     'テキストエディター',
     'A11y',
+    'Git',
 ];
