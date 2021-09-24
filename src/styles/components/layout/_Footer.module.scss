@@ -77,11 +77,13 @@
     }
     &_copy {
         color: color.$strong-gray;
-        font-size: 1.2rem;
         text-align: right;
-
         @include media.dark() {
             color: darken(color.$pure-white, 25%);
+        }
+
+        > small {
+            font-size: 1.4rem;
         }
     }
 }
