@@ -51,7 +51,7 @@
         }
     }
     &_bg {
-        $blur: 10;
+        $blur: 40;
 
         display: block;
         width: calc(100% + #{$blur * 2 + px});

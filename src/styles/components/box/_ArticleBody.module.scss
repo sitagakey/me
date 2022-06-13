@@ -12,6 +12,17 @@
             border-bottom: 1px solid color.$strong-gray;
         }
     }
+    img {
+        display: inline-flex;
+        width: 100%;
+        max-width: 500px;
+        border: 1px solid color.$strong-gray;
+        margin: 0 auto;
+
+        @include media.dark() {
+            border: 1px solid color.$pure-white;
+        }
+    }
     a,
     li {
         scroll-margin-top: 104px;
