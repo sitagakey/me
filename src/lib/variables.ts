@@ -12,4 +12,5 @@ export const tags = [
     'テキストエディター',
     'A11y',
     'Git',
+    'CSS',
 ];
