@@ -12,7 +12,7 @@ const Footer: React.VFC = () => {
             <ul className={styles["cmp_footer_tag-list-inr"]}>
               {tags.map((tag) => (
                 <li key={tag} className={styles["cmp_footer_tag-list-item"]}>
-                  <Link href="/tags/[name]" as={`/tags/${tag}`}>
+                  <Link href="/blog/tags/[name]" as={`/blog/tags/${tag}`}>
                     <a>{tag}</a>
                   </Link>
                 </li>

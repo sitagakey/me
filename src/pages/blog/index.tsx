@@ -31,10 +31,10 @@ const Home: React.VFC<Props> = (props) => {
         />
         <meta property="og:title" content="したがきちょう" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://hikiroom.site" />
+        <meta property="og:url" content="https://sitagakey.me" />
         <meta
           property="og:image"
-          content="https://hikiroom.site/images/ogp.png"
+          content="https://sitagakey.me/images/ogp.png"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@hikiroom" />

@@ -66,14 +66,14 @@ const Article: React.VFC<Props> = (props) => {
         <meta property="og:type" content="article" />
         <meta
           property="og:url"
-          content={`https://hikiroom.site${props.postData.filePathWithoutExt}`}
+          content={`https://sitagakey.me${props.postData.filePathWithoutExt}`}
         />
         <meta
           property="og:image"
           content={
             props.postData.thumbnail
-              ? `https://hikiroom.site${props.postData.thumbnail}`
-              : "https://hikiroom.site/images/ogp.png"
+              ? `https://sitagakey.me${props.postData.thumbnail}`
+              : "https://sitagakey.me/images/ogp.png"
           }
         />
         <meta name="twitter:card" content="summary_large_image" />
@@ -93,7 +93,7 @@ const Article: React.VFC<Props> = (props) => {
             <Container spFull={true}>
               <ArticleBody mdText={props.postData.body} />
               <ShareList
-                url={`https://hikiroom.site${props.postData.filePathWithoutExt}`}
+                url={`https://sitagakey.me${props.postData.filePathWithoutExt}`}
                 title={props.postData.title}
               />
               {props.postDataArrOfLatest5WithTag.map((postDataArrWithTag) => (
@@ -158,7 +158,7 @@ export const getStaticProps: GetStaticProps<
 
   const postDataArr = getPostDataArr();
   const postData = postDataArr.find((postData) => {
-    const contextPath = `/post/${year}/${month}/${name}`;
+    const contextPath = `/blog/post/${year}/${month}/${name}`;
 
     return contextPath === postData.filePathWithoutExt;
   });
