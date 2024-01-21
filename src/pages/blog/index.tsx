@@ -24,12 +24,12 @@ const Home: React.VFC<Props> = (props) => {
   return (
     <Layout>
       <Head>
-        <meta property="og:site_name" content="したがきちょう" />
+        <meta property="og:site_name" content="したがき帳" />
         <meta
           property="og:description"
           content="Webフロントエンドエンジニアのしたがきくんが書いているチラ裏日記だよ彡(^)(^)"
         />
-        <meta property="og:title" content="したがきちょう" />
+        <meta property="og:title" content="したがき帳" />
         <meta property="og:type" content="article" />
         <meta property="og:url" content="https://sitagakey.me" />
         <meta

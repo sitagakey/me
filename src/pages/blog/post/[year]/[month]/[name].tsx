@@ -25,7 +25,7 @@ const Article: React.VFC<Props> = (props) => {
   const description = (() => {
     const { year, month, date } = props.postData.date;
 
-    return `したがきちょうの${year}年${month}月${date}日に公開された記事、「${props.postData.title}」です。`;
+    return `したがき帳の${year}年${month}月${date}日に公開された記事、「${props.postData.title}」です。`;
   })();
   const jsonLd = (() => {
     const headLine = props.postData.title;
@@ -57,11 +57,11 @@ const Article: React.VFC<Props> = (props) => {
   return (
     <Layout title={`${props.postData.title}`} description={description}>
       <Head>
-        <meta property="og:site_name" content="したがきちょう" />
+        <meta property="og:site_name" content="したがき帳" />
         <meta property="og:description" content={description} />
         <meta
           property="og:title"
-          content={`${props.postData.title} | したがきちょう`}
+          content={`${props.postData.title} | したがき帳`}
         />
         <meta property="og:type" content="article" />
         <meta

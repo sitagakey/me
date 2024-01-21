@@ -27,7 +27,7 @@ const Footer: React.VFC = () => {
           </dd>
         </dl>
         <p className={styles["cmp_footer_copy"]}>
-          <small>&copy; 2020 したがきちょう</small>
+          <small>&copy; 2020 したがき帳</small>
         </p>
       </div>
     </footer>

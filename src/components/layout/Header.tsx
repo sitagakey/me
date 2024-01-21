@@ -6,7 +6,7 @@ type Props = {
 };
 
 const Header: React.VFC<Props> = (props) => {
-  const h1Title = "したがきちょう";
+  const h1Title = "したがき帳";
   const navListItem = [
     {
       href: "https://twitter.com/sitagakey",
