@@ -107,7 +107,7 @@ const Article: React.VFC<Props> = (props) => {
                 label={"最新のチラ裏"}
                 postDataArr={props.postDataArrOfLatest5}
               />
-              <LinkBtnBox href="/" label="最新のチラ裏一覧へ" />
+              <LinkBtnBox href="/blog" label="最新のチラ裏一覧へ" />
             </Container>
           </Container>
         </Container>
