@@ -16,7 +16,7 @@ const Layout: React.VFC<Props> = ({
 }) => {
   const mainTitle = "したがきちょう";
   const fallbackDescription =
-    "Webフロントエンドエンジニアのひきこもりくんが書いているチラ裏日記だよ彡(^)(^)";
+    "Webフロントエンドエンジニアのしたがきくんが書いているチラ裏日記だよ彡(^)(^)";
 
   return (
     <div>

@@ -27,7 +27,7 @@ const Home: React.VFC<Props> = (props) => {
         <meta property="og:site_name" content="したがきちょう" />
         <meta
           property="og:description"
-          content="Webフロントエンドエンジニアのひきこもりくんが書いているチラ裏日記だよ彡(^)(^)"
+          content="Webフロントエンドエンジニアのしたがきくんが書いているチラ裏日記だよ彡(^)(^)"
         />
         <meta property="og:title" content="したがきちょう" />
         <meta property="og:type" content="article" />

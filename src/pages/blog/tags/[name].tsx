@@ -28,7 +28,7 @@ const TagPage: React.VFC<Props> = (props) => {
         <Layout title={`タグ：${props.tagName}`}>
             <Head>
                 <meta property="og:site_name" content="したがきちょう" />
-                <meta property="og:description" content="ひきこもりくんのチラ裏" />
+                <meta property="og:description" content="したがきくんのチラ裏" />
                 <meta property="og:title" content={`タグ：${props.tagName} | したがきちょう`} />
                 <meta property="og:type" content="article" />
                 <meta property="og:url" content={`https://hikiroom.site/tags/${props.tagName}`} />

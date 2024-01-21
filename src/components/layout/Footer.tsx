@@ -23,7 +23,7 @@ const Footer: React.VFC = () => {
         <dl className={styles["cmp_footer_group"]}>
           <dt className={styles["cmp_footer_hdg"]}>僕について</dt>
           <dd>
-            僕は大都会渋谷でフロントエンドエンジニアをしているひきこもりくんだよ彡(^)(^)
+            僕は大都会渋谷でフロントエンドエンジニアをしているしたがきくんだよ彡(^)(^)
           </dd>
         </dl>
         <p className={styles["cmp_footer_copy"]}>
