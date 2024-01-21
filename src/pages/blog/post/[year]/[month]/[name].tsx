@@ -77,7 +77,7 @@ const Article: React.VFC<Props> = (props) => {
           }
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@hikiroom" />
+        <meta name="twitter:site" content="@sitagakey" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: jsonLd }}

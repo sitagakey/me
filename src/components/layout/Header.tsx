@@ -9,11 +9,11 @@ const Header: React.VFC<Props> = (props) => {
   const h1Title = "したがきちょう";
   const navListItem = [
     {
-      href: "https://twitter.com/hikiroom",
+      href: "https://twitter.com/sitagakey",
       name: "Twitter",
     },
     {
-      href: "https://github.com/hikiroom",
+      href: "https://github.com/sitagakey",
       name: "GitHub",
     },
   ];

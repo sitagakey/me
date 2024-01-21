@@ -43,7 +43,7 @@ const TagPage: React.VFC<Props> = (props) => {
           content="https://sitagakey.me/images/ogp.png"
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@hikiroom" />
+        <meta name="twitter:site" content="@sitagakey" />
       </Head>
       <Container>
         <DescriptionText>
