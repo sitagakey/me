@@ -23,13 +23,13 @@ const Header: React.VFC<Props> = (props) => {
       <div className={styles["cmp_header_inr"]}>
         {props.hasTitle ? (
           <p className={styles["cmp_header_hdg"]}>
-            <Link href="/">
+            <Link href="/blog">
               <a>{h1Title}</a>
             </Link>
           </p>
         ) : (
           <h1 className={styles["cmp_header_hdg"]}>
-            <Link href="/">
+            <Link href="/blog">
               <a>{h1Title}</a>
             </Link>
           </h1>
