@@ -11,6 +11,8 @@ import ShareLinkList from '../../components/list/ShareLinkList/index.astro';
 import { getRawArticles, getRelatedArticleInfoRecord, getArticleInfo } from '../../lib/articles';
 import ArticleContentCard from '../../components/card/ArticleContentCard.astro';
 import LatestArticleList from '../../components/list/LatestArticleList.astro';
+import { formatDateForDescription } from '../../lib/date';
+import { SITE_TITLE } from '../../consts';
 
 export async function getStaticPaths() {
   const rawArticles = await getRawArticles();
@@ -38,7 +40,11 @@ const { title, publishedAt, updatedAt, thumbnail, tags } = rawArticle.data;
 
 <html lang="ja">
   <head>
-    <BaseHead title={title} />
+    <BaseHead
+      title={title}
+      description={`${SITE_TITLE}の${formatDateForDescription(publishedAt)}公開の記事、「${title}」です。`}
+      image={thumbnail}
+    />
     <style>
       .article {
         max-width: 688px;
