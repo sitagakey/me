@@ -50,3 +50,15 @@ const refinedDescription = description ? description : SITE_DESCRIPTION;
 <meta property="twitter:title" content={refinedTitle} />
 <meta property="twitter:description" content={refinedDescription} />
 <meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+
+<!-- Google tag (gtag.js) -->
+<script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-HYKZGM0HE0"></script>
+<script type="text/partytown">
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+
+  gtag('config', 'G-HYKZGM0HE0');
+</script>

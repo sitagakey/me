@@ -3,8 +3,8 @@
 import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 import icon from 'astro-icon';
-
 import react from '@astrojs/react';
+import partytown from '@astrojs/partytown';
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,6 +14,11 @@ export default defineConfig({
     icon({
       iconDir: 'src/assets/icons'
     }),
-    react()
+    react(),
+    partytown({
+      config: {
+        forward: ['dataLayer.push']
+      }
+    })
   ]
 });
