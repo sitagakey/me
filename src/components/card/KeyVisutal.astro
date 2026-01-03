@@ -1,0 +1,156 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE_TITLE } from '../../consts';
+import { getCollection } from 'astro:content';
+import IconHeadingContent from '../heading/IconHeadingContent.astro';
+import Tag from '../link/Tag.astro';
+import { fisherYatesShuffle } from '../../lib/array';
+import type { RawArticle } from '../../content.config';
+
+interface Props {
+  rawArticles: RawArticle[];
+}
+
+const { rawArticles } = Astro.props;
+
+const tagList = Array.from(new Set(rawArticles.map((rawArticle) => rawArticle.data.tags).flat()));
+
+const slicedTagList = fisherYatesShuffle(tagList).slice(0, 6);
+const restTagListLength = tagList.length - slicedTagList.length;
+---
+
+<div class="key-visual">
+  <div class="container">
+    <div class="lead-text">
+      <p class="lead-text1">
+        {SITE_TITLE}へようこそ！<Icon name="handshake" size="52" class="icon pc" /><Icon
+          name="handshake"
+          size="40"
+          class="icon sp"
+        />
+      </p>
+      <p class="lead-text2">
+        ここはIT DeveloperがTechなことや日々の考えを書き散らすチラ裏Blogです<Icon
+          name="pencil"
+          size="32"
+          class="icon pc"
+        /><Icon name="pencil" size="20" class="icon sp" />
+      </p>
+    </div>
+
+    <!-- pc -->
+    <div class="tag-list-container pc">
+      <h2><IconHeadingContent iconName="tag" size="md" href="/tags">あなたの興味から記事を探す</IconHeadingContent></h2>
+
+      <div class="list">
+        {slicedTagList.map((tag) => <Tag label={tag} size="md" />)}
+        <!-- {slicedTagList.map((tag) => <Tag label={tag} size="md" class="sp" />)} -->
+        <div class="others">他 {restTagListLength} 件</div>
+      </div>
+    </div>
+
+    <!-- sp -->
+    <div class="tag-list-container sp">
+      <h2><IconHeadingContent iconName="tag" size="sm" href="/tags">あなたの興味から記事を探す</IconHeadingContent></h2>
+
+      <div class="list">
+        {slicedTagList.map((tag) => <Tag label={tag} size="sm" />)}
+        <!-- {slicedTagList.map((tag) => <Tag label={tag} size="md" class="sp" />)} -->
+        <div class="others">他 {restTagListLength} 件</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .key-visual {
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid var(--gray);
+
+    @media (max-width: 768px) {
+      min-height: auto;
+    }
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 24px 24px;
+    height: 100%;
+    gap: 80px;
+
+    @media (max-width: 768px) {
+      padding: 24px 16px;
+      gap: 40px;
+    }
+  }
+
+  .lead-text {
+    display: grid;
+    gap: 16px;
+
+    @media (max-width: 768px) {
+      gap: 8px;
+    }
+  }
+
+  .lead-text1 {
+    font-size: 40px;
+    font-weight: 900;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
+
+  .lead-text2 {
+    font-size: 18px;
+    line-height: 1.8;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+
+  .lead-text1 .icon {
+    vertical-align: text-bottom;
+  }
+
+  .lead-text2 .icon {
+    vertical-align: middle;
+  }
+
+  .tag-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @media (max-width: 768px) {
+      gap: 8px;
+    }
+  }
+
+  .list {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    @media (max-width: 768px) {
+      gap: 8px;
+    }
+  }
+
+  .others {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+  }
+</style>

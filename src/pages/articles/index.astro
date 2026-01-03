@@ -1,0 +1,13 @@
+---
+import ArticleList from '../../components/list/ArticleList.astro';
+import ListLayout from '../../layouts/ListLayout.astro';
+import { getArticleInfo, getRawArticles } from '../../lib/articles';
+
+const rawArticles = await getRawArticles();
+
+const articleInfoList = rawArticles.map(getArticleInfo);
+---
+
+<ListLayout icon="newspaper" heading="最新記事">
+  <ArticleList list={articleInfoList} headingLevel={2} />
+</ListLayout>

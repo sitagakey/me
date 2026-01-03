@@ -1,0 +1,100 @@
+---
+import { Image } from 'astro:assets';
+import profileImage from '/src/assets/images/profile.webp';
+import { AUTHOR_NAME } from '../../consts';
+import { Icon } from 'astro-icon/components';
+---
+
+<div class="profile-card">
+  <div class="profile-icon">
+    <Image src={profileImage} alt="" />
+  </div>
+
+  <div class="info">
+    <span class="author-name">{AUTHOR_NAME}</span>
+    <span class="description"
+      >{
+        `渋谷でWebフロントエンドDeveloperをやっている人。\n最近はバックエンド領域の勉強に力をいれているらしい（らしい）。`
+      }</span
+    >
+    <ul class="link-list">
+      <li class="item">
+        <a href="https://x.com/sitagakey" target="_blank" aria-label="x"><Icon class="icon" name="x" size="24" /></a>
+      </li>
+      <li class="item">
+        <a href="https://github.com/sitagakey" target="_blank" aria-label="GitHub"
+          ><Icon class="icon" name="github" size="24" /></a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .profile-card {
+    display: flex;
+    gap: 16px;
+    padding: 24px 32px;
+    background-color: var(--gray-light);
+    border-radius: 8px;
+
+    @media (max-width: 768px) {
+      gap: 8px;
+      padding: 24px 16px;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .profile-icon {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .profile-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  .author-name {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .description {
+    font-size: 14px;
+    white-space: pre-wrap;
+    margin-top: 8px;
+
+    @media (max-width: 500px) {
+      white-space: normal;
+      font-size: 12px;
+    }
+  }
+
+  .link-list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .link-list .item a {
+    display: flex;
+  }
+</style>

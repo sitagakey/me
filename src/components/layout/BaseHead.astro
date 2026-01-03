@@ -1,0 +1,52 @@
+---
+import '../../styles/global.css';
+import type { ImageMetadata } from 'astro';
+import FallbackImage from '../../assets/images/default-og.png';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+interface Props {
+  title: string;
+  image?: ImageMetadata;
+  description?: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const { title, image = FallbackImage, description } = Astro.props;
+const refinedTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
+const refinedDescription = description ? description : SITE_DESCRIPTION;
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={new URL('rss.xml', Astro.site)} />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Font preloads -->
+<link rel="preload" href="/fonts/KleeOne-Regular.ttf" as="font" type="font/ttf" crossorigin />
+<link rel="preload" href="/fonts/KleeOne-SemiBold.ttf" as="font" type="font/ttf" crossorigin />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary Meta Tags -->
+<title>{refinedTitle}</title>
+<meta name="title" content={refinedTitle} />
+<meta name="description" content={refinedDescription} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={refinedTitle} />
+<meta property="og:description" content={refinedDescription} />
+<meta property="og:image" content={new URL(image.src, Astro.url)} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={refinedTitle} />
+<meta property="twitter:description" content={refinedDescription} />
+<meta property="twitter:image" content={new URL(image.src, Astro.url)} />

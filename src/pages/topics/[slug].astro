@@ -1,0 +1,39 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleList from '../../components/list/ArticleList.astro';
+import ListLayout from '../../layouts/ListLayout.astro';
+import { getArticleInfo, getRawArticles } from '../../lib/articles';
+
+export async function getStaticPaths() {
+  return [{ params: { slug: 'tech' } }, { params: { slug: 'feeling' } }];
+}
+
+const { slug } = Astro.params;
+
+const rawArticles = await getRawArticles();
+
+const articleInfoList = rawArticles.map(getArticleInfo);
+
+const filteredArticleInfoList = articleInfoList.filter((articleInfo) => {
+  if (slug === 'tech') return !articleInfo.tagList.includes('日記');
+  if (slug === 'feeling') return articleInfo.tagList.includes('日記');
+
+  return false;
+});
+
+const heading =
+  {
+    tech: 'Techな記事',
+    feeling: 'お気持ち記事'
+  }[Astro.params.slug] ?? '';
+
+const icon =
+  {
+    tech: 'code',
+    feeling: 'memo'
+  }[Astro.params.slug] ?? '';
+---
+
+<ListLayout icon={icon} heading={heading}>
+  <ArticleList list={filteredArticleInfoList} headingLevel={2} />
+</ListLayout>

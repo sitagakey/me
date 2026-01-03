@@ -1,0 +1,36 @@
+---
+import { Icon } from 'astro-icon/components';
+import { ShareLinkListCore } from './ShareLinkListCore';
+
+interface Props {
+  url: string;
+  title: string;
+}
+
+const { url, title } = Astro.props;
+---
+
+<div class="share-link-list">
+  <div class="heading">
+    <Icon name="share" size="24" />
+    この記事をシェアする
+  </div>
+  <ShareLinkListCore client:load url={url} title={title} />
+</div>
+
+<style>
+  .share-link-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .heading {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+</style>

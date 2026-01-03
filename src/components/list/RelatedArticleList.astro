@@ -1,0 +1,83 @@
+---
+import IconHeadingContent from '../heading/IconHeadingContent.astro';
+
+interface Props {
+  tag: string;
+  list: {
+    id: string;
+    title: string;
+    thumbnail?: string;
+  }[];
+}
+
+const { tag, list } = Astro.props;
+---
+
+<div class="related-article-list">
+  <h2>
+    <IconHeadingContent iconName="tag" size="sm" href={`/tags/${tag}`}>
+      {tag}に関連する記事
+    </IconHeadingContent>
+  </h2>
+
+  <ul class="list">
+    {
+      list.map((article) => (
+        <li class="item">
+          <a href={`/articles/${article.id}`} class="thumbnail">
+            {article.thumbnail && <img src={article.thumbnail} alt="" width="280" height="140" />}
+          </a>
+          <a href={`/articles/${article.id}`} class="title">
+            {article.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .related-article-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .list {
+    display: flex;
+    gap: 24px;
+    flex-direction: column;
+  }
+
+  .list .item {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  .list .item .title {
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    font-size: 14px;
+  }
+
+  .list .item .thumbnail {
+    display: block;
+    aspect-ratio: 1.91 / 1;
+    width: 80px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    border: 1px solid var(--gray);
+    overflow: hidden;
+  }
+
+  .list .item .thumbnail img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
