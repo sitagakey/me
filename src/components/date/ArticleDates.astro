@@ -1,0 +1,48 @@
+---
+import { formatDate } from '../../lib/date';
+
+interface Props {
+  publishedAt: Date;
+  updatedAt?: Date;
+  size: 'sm' | 'md';
+}
+
+const { publishedAt, updatedAt, size = 'md' } = Astro.props;
+---
+
+<div class:list={['dates', `size-${size}`]}>
+  <time class="date" datetime={publishedAt.toISOString()}>
+    公開日: {formatDate(publishedAt)}
+  </time>
+  {
+    updatedAt && (
+      <time class="date" datetime={updatedAt.toISOString()}>
+        更新日: {formatDate(updatedAt)}
+      </time>
+    )
+  }
+</div>
+
+<style>
+  .dates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+  }
+
+  .dates.size-sm {
+    font-size: 10px;
+  }
+
+  .dates.size-md {
+    font-size: 14px;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+    }
+  }
+
+  .date {
+    color: var(--gray-dark);
+  }
+</style>

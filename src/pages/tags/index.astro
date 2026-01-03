@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import Tag from '../../components/link/Tag.astro';
+import ListLayout from '../../layouts/ListLayout.astro';
+const rawArticles = await getCollection('rawArticle');
+
+const tags = Array.from(new Set(rawArticles.map((rawArticle) => rawArticle.data.tags).flat()));
+
+const tagList = tags.sort((a, b) => a.localeCompare(b));
+---
+
+<ListLayout heading="あなたの興味から記事を探す" icon="tag">
+  <ul class="list">
+    {
+      tagList.map((tag) => (
+        <li>
+          <Tag label={tag} size="lg" />
+        </li>
+      ))
+    }
+  </ul>
+</ListLayout>
+
+<style>
+  .list {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+</style>

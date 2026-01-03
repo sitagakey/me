@@ -1,0 +1,121 @@
+---
+import { render } from 'astro:content';
+import type { RawArticle } from '../../content.config';
+
+interface Props {
+  rawArticle: RawArticle;
+}
+
+const { rawArticle } = Astro.props;
+const { Content } = await render(rawArticle);
+---
+
+<div class="article-content-card">
+  <Content />
+</div>
+
+<style>
+  .article-content-card > :global(*) {
+    line-height: 1.8;
+    font-family: 'default', sans-serif;
+  }
+
+  .article-content-card > :global(:not(:first-child)) {
+    margin-top: 40px;
+
+    @media (max-width: 768px) {
+      margin-top: 32px;
+    }
+  }
+
+  .article-content-card > :global(:not(:first-child)) + :global(:is(h1, h2, h3, h4, h5, h6)) {
+    margin-top: 56px;
+
+    @media (max-width: 768px) {
+      margin-top: 48px;
+    }
+  }
+
+  .article-content-card > :global(:is(h1, h2, h3, h4, h5, h6)) + :global(*) {
+    margin-top: 16px !important;
+  }
+
+  .article-content-card > :global(p) + :global(ul, ol, blockquote, pre) {
+    margin-top: 16px !important;
+  }
+
+  .article-content-card > :global(code),
+  .article-content-card > :global(:is(h1, h2, h3, h4, h5, h6, p, ul, ol)) :global(code) {
+    padding: 4px 6px;
+    background-color: var(--gray-light);
+    border-radius: 2px;
+    margin: 0 4px;
+    font-family: sans-serif;
+    font-size: 0.8em;
+  }
+
+  .article-content-card :global(ul) {
+    list-style: disc;
+    padding-left: 20px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .article-content-card :global(ul) :global(ul) {
+    margin-top: 8px;
+  }
+
+  .article-content-card :global(ol) {
+    list-style: decimal;
+    padding-left: 20px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .article-content-card :global(ol) :global(ol) {
+    margin-top: 8px;
+  }
+
+  .article-content-card :global(img) {
+    max-height: 400px;
+    object-fit: contain;
+    width: 100%;
+  }
+
+  .article-content-card :global(blockquote) {
+    font-size: 14px;
+    color: var(--gray-strong-dark);
+    background-color: var(--gray-light);
+    padding: 16px;
+  }
+
+  .article-content-card :global(em) {
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  .article-content-card :global(strong) {
+    font-style: normal;
+    font-weight: 700;
+    color: var(--danger);
+  }
+
+  .article-content-card :global(h2) {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .article-content-card :global(h3) {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .article-content-card :global(h4) {
+    font-size: 16px;
+    font-weight: 700;
+  }
+</style>

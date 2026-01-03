@@ -1,0 +1,37 @@
+---
+interface Props {
+  label: string;
+  size: 'sm' | 'md' | 'lg';
+}
+
+const { label, size = 'md' } = Astro.props;
+---
+
+<a class:list={['tag', `size-${size}`]} href={`/tags/${label}`}>
+  {label}
+</a>
+
+<style>
+  .tag {
+    display: inline-flex;
+    background-color: var(--accent);
+    color: var(--black);
+    border-radius: 100px;
+    padding: 4px 16px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .size-sm {
+    font-size: 10px;
+  }
+
+  .size-md {
+    font-size: 14px;
+  }
+
+  .size-lg {
+    font-size: 16px;
+  }
+</style>

@@ -1,0 +1,60 @@
+---
+import { Icon } from 'astro-icon/components';
+import { SITE_TITLE } from '../../consts';
+---
+
+<header class="header">
+  <div class="inner">
+    <h1 class="heading"><a href="/"><Icon name="logo" title={SITE_TITLE} /></a></h1>
+
+    <nav class="nav">
+      <ul class="link-list">
+        <li class="item">
+          <a href="https://x.com/sitagakey" target="_blank" aria-label="x"><Icon class="icon" name="x" size="26" /></a>
+        </li>
+        <li class="item">
+          <a href="https://github.com/sitagakey" target="_blank" aria-label="GitHub"
+            ><Icon class="icon" name="github" size="26" /></a
+          >
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    background-color: var(--white);
+    border-bottom: 1px solid var(--gray);
+  }
+
+  .inner {
+    padding: 16px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .heading {
+    line-height: 1;
+    font-size: 26px;
+  }
+
+  .link-list {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .link-list .item a {
+    display: flex;
+  }
+
+  .icon {
+    display: block;
+  }
+</style>

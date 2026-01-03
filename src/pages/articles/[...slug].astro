@@ -1,0 +1,163 @@
+---
+import { Image } from 'astro:assets';
+import ProfileCard from '../../components/card/ProfileCard.astro';
+import SmallProfileCard from '../../components/card/SmallProfileCard.astro';
+import ArticleDates from '../../components/date/ArticleDates.astro';
+import BaseHead from '../../components/layout/BaseHead.astro';
+import Footer from '../../components/layout/Footer.astro';
+import Header from '../../components/layout/Header.astro';
+import RelatedArticleList from '../../components/list/RelatedArticleList.astro';
+import ShareLinkList from '../../components/list/ShareLinkList/index.astro';
+import { getRawArticles, getRelatedArticleInfoRecord, getArticleInfo } from '../../lib/articles';
+import ArticleContentCard from '../../components/card/ArticleContentCard.astro';
+import LatestArticleList from '../../components/list/LatestArticleList.astro';
+
+export async function getStaticPaths() {
+  const rawArticles = await getRawArticles();
+
+  return rawArticles.map((article) => {
+    return {
+      params: { slug: article.id },
+      props: { rawArticles }
+    };
+  });
+}
+
+const { rawArticles } = Astro.props;
+const rawArticle = rawArticles.find((rawArticle) => rawArticle.id === Astro.params.slug);
+if (!rawArticle) {
+  throw new Error(`Article not found: ${Astro.params.slug}`);
+}
+
+const relatedArticleInfoRecord = getRelatedArticleInfoRecord(rawArticle, rawArticles);
+
+const latestArticleInfoList = rawArticles.map(getArticleInfo).slice(0, 5);
+
+const { title, publishedAt, updatedAt, thumbnail, tags } = rawArticle.data;
+---
+
+<html lang="ja">
+  <head>
+    <BaseHead title={title} />
+    <style>
+      .article {
+        max-width: 688px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        @media (max-width: 768px) {
+          gap: 8px;
+        }
+      }
+
+      .article-header {
+        padding: 40px 24px 0;
+
+        @media (max-width: 768px) {
+          padding: 0;
+        }
+      }
+
+      .thumbnail {
+        width: 100%;
+        aspect-ratio: 1/0.5;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--gray);
+
+        @media (max-width: 768px) {
+          border-radius: 0;
+          border: none;
+        }
+      }
+
+      .thumbnail img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .article-body {
+        display: flex;
+        flex-direction: column;
+        gap: 48px;
+        padding: 0 24px 80px;
+
+        @media (max-width: 768px) {
+          padding: 0 16px 80px;
+        }
+      }
+
+      .article-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .dates {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .date {
+        font-size: 14px;
+        color: var(--dark-gray);
+      }
+
+      .heading {
+        font-size: 32px;
+        font-weight: 700;
+
+        @media (max-width: 768px) {
+          font-size: 20px;
+        }
+      }
+
+      .author-name {
+        font-weight: 700;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <Header />
+    <main>
+      <article class="article">
+        <div class="article-header">
+          <div class="thumbnail">
+            {thumbnail && <Image src={thumbnail} alt="" />}
+          </div>
+        </div>
+
+        <div class="article-body">
+          <div class="article-meta">
+            <ArticleDates publishedAt={publishedAt} updatedAt={updatedAt} size="sm" />
+
+            <h1 class="heading">{title}</h1>
+
+            <SmallProfileCard />
+          </div>
+
+          <ArticleContentCard rawArticle={rawArticle} />
+
+          <ShareLinkList url={Astro.url.toString()} title={title} />
+
+          <ProfileCard />
+
+          {
+            Object.entries(relatedArticleInfoRecord).map(([tag, articles]) => (
+              <RelatedArticleList tag={tag} list={articles} />
+            ))
+          }
+          <LatestArticleList list={latestArticleInfoList} />
+        </div>
+      </article>
+    </main>
+    <Footer />
+  </body>
+</html>

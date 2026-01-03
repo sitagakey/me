@@ -1,0 +1,69 @@
+---
+import { Image } from 'astro:assets';
+import profileImage from '/src/assets/images/profile.webp';
+import { AUTHOR_NAME } from '../../consts';
+import { Icon } from 'astro-icon/components';
+---
+
+<div class="small-profile-card">
+  <div class="profile-icon">
+    <Image src={profileImage} alt="" />
+  </div>
+
+  <div class="info">
+    <span class="author-name">{AUTHOR_NAME}</span>
+    <ul class="link-list">
+      <li class="item">
+        <a href="https://x.com/sitagakey" target="_blank" aria-label="x"><Icon class="icon" name="x" size="16" /></a>
+      </li>
+      <li class="item">
+        <a href="https://github.com/sitagakey" target="_blank" aria-label="GitHub"
+          ><Icon class="icon" name="github" size="16" /></a
+        >
+      </li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .small-profile-card {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    line-height: 1;
+  }
+
+  .profile-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .profile-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .author-name {
+    font-size: 12px;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+  }
+
+  .link-list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .link-list .item a {
+    display: flex;
+  }
+</style>

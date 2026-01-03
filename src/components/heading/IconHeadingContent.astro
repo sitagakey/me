@@ -1,0 +1,80 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  iconName: string;
+  size?: 'sm' | 'md';
+  href?: string;
+}
+
+const { iconName, size = 'md', href = '', } = Astro.props;
+
+const iconSize = {
+  sm: 20,
+  md: 32
+}[size];
+---
+
+<span class:list={["container", `size-${size}`]}>
+  {
+    href ? (
+      <a href={href} class="link">
+        <Icon name={iconName} size={iconSize} class="icon" />
+        <span class="title"><slot /></span>
+        <Icon name="right-arrow" size={iconSize} class="icon" />
+      </a>
+    ) : (
+      <Icon name={iconName} size={iconSize} class="icon" />
+      <span class="title"><slot /></span>
+    )
+  }
+</span>
+
+<style>
+  .container {
+    display: inline-flex;
+    align-items: center;
+    font-weight: 700;
+  }
+
+  .link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+
+    @media (width <= 768px) {
+        gap: 8px;
+      }
+  }
+
+  .icon {
+    vertical-align: middle;
+  }
+  
+  .title {
+    line-height: 1;
+  }
+
+  .size-sm {
+    font-size: 16px;
+    gap: 12px;
+    
+    @media (width <= 768px) {
+        gap: 8px;
+        font-size: 14px;
+      }
+  }
+
+  .size-md {
+    font-size: 24px;
+    gap: 12px;
+
+    @media (width <= 768px) {
+      gap: 8px;
+      font-size: 18px;
+    }
+  }
+
+</style>

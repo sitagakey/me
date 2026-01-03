@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import ArticleList from '../../components/list/ArticleList.astro';
+import ListLayout from '../../layouts/ListLayout.astro';
+import { getArticleInfo } from '../../lib/articles';
+
+export async function getStaticPaths() {
+  const rawArticles = (await getCollection('rawArticle')).sort(
+    (a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf()
+  );
+  const tags = Array.from(new Set(rawArticles.map((rawArticle) => rawArticle.data.tags).flat()));
+
+  return tags.map((tag) => ({
+    params: { slug: tag },
+    props: { rawArticles, tag }
+  }));
+}
+
+const { rawArticles, tag } = Astro.props;
+
+const articleList = rawArticles.map(getArticleInfo).filter((article) => {
+  return article.tagList.includes(tag);
+});
+---
+
+<ListLayout heading={tag} icon="tag">
+  <ArticleList list={articleList} headingLevel={2} />
+</ListLayout>

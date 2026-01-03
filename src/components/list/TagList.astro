@@ -1,0 +1,53 @@
+---
+import { Icon } from 'astro-icon/components';
+import Tag from '../link/Tag.astro';
+
+interface Props {
+  list: string[];
+  size: 'sm' | 'md';
+}
+
+const { list, size = 'md' } = Astro.props;
+
+const iconSize = {
+  sm: 16,
+  md: 24
+}[size];
+---
+
+<div class:list={['container', `size-${size}`]}>
+  <a href="/tags" class="icon-container"><Icon name="tag" size={iconSize} class="icon" /></a>
+
+  <ul class="list">
+    {
+      list.map((tag) => (
+        <li>
+          <Tag label={tag} size={size} />
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .icon-container {
+    display: flex;
+    height: fit-content;
+    align-items: center;
+  }
+  .icon {
+    vertical-align: middle;
+    flex-shrink: 0;
+  }
+  .list {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+</style>

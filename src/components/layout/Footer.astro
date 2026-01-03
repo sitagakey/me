@@ -1,0 +1,45 @@
+---
+import { SITE_TITLE } from '../../consts';
+
+const today = new Date();
+---
+
+<footer>
+  <small class="inner">
+    &copy; {today.getFullYear()}
+    {SITE_TITLE}
+    <ul class="social-links">
+      <li>
+        Some icons by <a href="https://github.com/webalys-hq/streamline-vectors?tab=readme-ov-file" target="_blank"
+          >Streamline</a
+        > (Freehand Color) are licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank"
+          >CC BY 4.0</a
+        >.
+      </li>
+    </ul>
+  </small>
+</footer>
+<style>
+  footer {
+    background-color: var(--gray);
+  }
+
+  .inner {
+    display: flex;
+    gap: 8px 32px;
+    padding: 16px 24px;
+    margin: 0 auto;
+    max-width: 1280px;
+    font-size: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .social-links {
+    padding-left: 14px;
+    display: flex;
+    justify-content: center;
+    list-style-type: disc;
+    font-size: 12px;
+  }
+</style>
