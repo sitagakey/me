@@ -14,11 +14,11 @@ import { Icon } from 'astro-icon/components';
     <span class="author-name">{AUTHOR_NAME}</span>
     <ul class="link-list">
       <li class="item">
-        <a href="https://x.com/sitagakey" target="_blank" aria-label="x"><Icon class="icon" name="x" size="16" /></a>
+        <a href="https://x.com/sitagakey" target="_blank" aria-label="x"><Icon class="icon" name="x" size="24" /></a>
       </li>
       <li class="item">
         <a href="https://github.com/sitagakey" target="_blank" aria-label="GitHub"
-          ><Icon class="icon" name="github" size="16" /></a
+          ><Icon class="icon" name="github" size="24" /></a
         >
       </li>
     </ul>
@@ -29,13 +29,13 @@ import { Icon } from 'astro-icon/components';
   .small-profile-card {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 14px;
     line-height: 1;
   }
 
   .profile-icon {
-    width: 32px;
-    height: 32px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     overflow: hidden;
   }
@@ -47,20 +47,19 @@ import { Icon } from 'astro-icon/components';
   }
 
   .author-name {
-    font-size: 12px;
+    font-size: 16px;
   }
 
   .info {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    align-items: center;
+    gap: 8px;
   }
 
   .link-list {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 16px;
   }
 
   .link-list .item a {
