@@ -1,18 +1,16 @@
 ---
 import '../../styles/global.css';
-import type { ImageMetadata } from 'astro';
-import FallbackImage from '../../assets/images/default-og.png';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
 
 interface Props {
   title?: string;
-  image?: ImageMetadata;
+  image?: string;
   description?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, image = FallbackImage, description } = Astro.props;
+const { title, image = '/images/default-og.png', description } = Astro.props;
 const refinedTitle = title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
 const refinedDescription = description ? description : SITE_DESCRIPTION;
 ---
@@ -38,14 +36,14 @@ const refinedDescription = description ? description : SITE_DESCRIPTION;
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={refinedTitle} />
 <meta property="og:description" content={refinedDescription} />
-<meta property="og:image" content={new URL(image.src, Astro.url)} />
+<meta property="og:image" content={new URL(image, Astro.url)} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={refinedTitle} />
 <meta property="twitter:description" content={refinedDescription} />
-<meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+<meta property="twitter:image" content={new URL(image, Astro.url)} />
 
 <!-- Google tag (gtag.js) -->
 <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-HYKZGM0HE0"></script>

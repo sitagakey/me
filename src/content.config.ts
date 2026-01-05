@@ -5,10 +5,10 @@ const rawArticle = defineCollection({
   // Load Markdown and MDX files in the `src/content/blog/` directory.
   loader: glob({ base: './src/content/articles', pattern: '**/*.{md,mdx}' }),
   // Type-check frontmatter using a schema
-  schema: ({ image }) =>
+  schema: () =>
     z.object({
       title: z.string(),
-      thumbnail: image().optional(),
+      thumbnail: z.string().optional(),
       tags: z.array(z.string()).default([]),
       // Transform string to Date object
       publishedAt: z.coerce.date(),
