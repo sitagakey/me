@@ -22,25 +22,21 @@ export const getRelatedArticleInfoRecord = (
   rawArticles: RawArticle[]
 ): Record<string, ArticleInfo[]> => {
   const relatedArticles = rawArticles.filter(
-    (comparisonTarget) =>
-      comparisonTarget.id !== targetRawArticle.id &&
-      comparisonTarget.data.tags.some((tag) => targetRawArticle.data.tags.includes(tag))
+    (rawArticle) =>
+      rawArticle.id !== targetRawArticle.id &&
+      rawArticle.data.tags.some((tag) => targetRawArticle.data.tags.includes(tag))
   );
 
-  const relatedArticlesRecord: Record<string, ArticleInfo[]> = {};
-  relatedArticles.forEach((relatedArticle) => {
-    relatedArticle.data.tags.forEach((tag) => {
-      if (!relatedArticlesRecord[tag]) relatedArticlesRecord[tag] = [];
+  const relatedArticlesInfoRecord: Record<string, ArticleInfo[]> = {};
+  targetRawArticle.data.tags.forEach((tag) => {
+    const relatedArticleInfoList = relatedArticles
+      .filter((relatedArticle) => relatedArticle.data.tags.includes(tag))
+      .map(getArticleInfo);
 
-      relatedArticlesRecord[tag].push({
-        id: relatedArticle.id,
-        title: relatedArticle.data.title,
-        thumbnail: relatedArticle.data.thumbnail?.src,
-        publishedAt: relatedArticle.data.publishedAt,
-        tagList: relatedArticle.data.tags
-      });
-    });
+    if (relatedArticleInfoList.length > 0) {
+      relatedArticlesInfoRecord[tag] = relatedArticleInfoList;
+    }
   });
 
-  return relatedArticlesRecord;
+  return relatedArticlesInfoRecord;
 };
