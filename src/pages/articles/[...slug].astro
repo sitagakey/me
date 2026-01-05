@@ -35,7 +35,7 @@ const relatedArticleInfoRecord = getRelatedArticleInfoRecord(rawArticle, rawArti
 
 const latestArticleInfoList = rawArticles.map(getArticleInfo).slice(0, 5);
 
-const { title, publishedAt, updatedAt, thumbnail } = rawArticle.data;
+const { title, publishedAt, updatedAt, thumbnail, tags } = rawArticle.data;
 ---
 
 <html lang="ja">
@@ -136,7 +136,7 @@ const { title, publishedAt, updatedAt, thumbnail } = rawArticle.data;
       <article class="article">
         <div class="article-header">
           <div class="thumbnail">
-            {thumbnail && <Image src={thumbnail} alt="" width="638" height="318" />}
+            {thumbnail && <Image src={thumbnail} alt="" />}
           </div>
         </div>
 

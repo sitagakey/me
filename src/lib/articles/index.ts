@@ -13,7 +13,7 @@ export const getArticleInfo = (article: RawArticle): ArticleInfo => ({
   id: article.id,
   title: article.data.title,
   tagList: article.data.tags,
-  thumbnail: article.data.thumbnail,
+  thumbnail: article.data.thumbnail?.src,
   publishedAt: article.data.publishedAt
 });
 
